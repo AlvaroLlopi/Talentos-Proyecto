@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-const getPaisData = async (id: string) => {
+const getCharacterData = async (id: string) => {
   const response = await fetch(
-    `https://restcountries.com/v3.1/name/${id}?fullText=true`
+    `https://rickandmortyapi.com/api/character/${id}`
   );
 
   const data = await response.json();
@@ -10,26 +10,20 @@ const getPaisData = async (id: string) => {
   return data || {};
 };
 
-export default async function PaisPorIdPage({ params }: any) {
-  const data = await getPaisData(params.id);
+export default async function CharacterById({ params }: any) {
+  const data = await getCharacterData(params.id);
 
   return (
-    <div className="flex flex-col gap-4 w-full justify-center items-center mt-4">
-      <h3>{data[0].name.common}</h3>
+    <div className="flex flex-col gap-4 w-full justify-center items-center mt-1">
+      <h3>{data.name}</h3>
 
       <Image
-        src={data[0].flags.png}
-        width={100}
-        height={100}
-        alt={data[0].name.common}
-      />
-
-      <Image
-        src={data[0].coatOfArms.png}
-        width={100}
-        height={100}
-        alt={data[0].name.common}
+        src={data.image}
+        width={300}
+        height={300}
+        alt={data.name}
       />
     </div>
   );
 }
+
