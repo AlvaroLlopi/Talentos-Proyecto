@@ -13,8 +13,8 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
   return (
     <div key={character.id} className="flex flex-col items-center gap-2 w-52">
       <Image
-        width={40}
-        height={40}
+        width={100}
+        height={100}
         src={character.image}
         alt={character.name}
         className="w-10 h-10"
