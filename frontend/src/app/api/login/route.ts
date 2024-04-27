@@ -1,17 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
-import users from "./users.json";
+import { createServerClient } from "@/utils/supabase/server";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   const body = await req.json();
   const { user, password } = body;
+  const supabase =createServerClient();
+  const usuarioEncontrado = await supabase
+  .from('users')
+  .select('*')
+  .filter('username', 'eq',user)
+  .filter('password', 'eq', password)
+  .limit(1).
+  single();
   
-  const usuarioEncontrado = users.usuarios.find(
-    (usuario) => usuario.user === user && usuario.password === password
-  );
-
-  if (usuarioEncontrado !== undefined) {
+  
+  if (usuarioEncontrado.data !== null) {
     return Response.json({ message: 'Bienvenido' });
   } else {
-    return Response.json({ message: 'usuario no encontrado' });
+    return Response.json({ message: 'Usuario no encontrado' },{
+      status:401,
+    });
   }
 }

@@ -1,8 +1,10 @@
 'use client';
 
 import { useRouter } from 'next/navigation'
+import { useState } from 'react';
 
 export const LoginForm = () => {
+  const [error,setError] = useState<string | null>(null);
   const router = useRouter();
 
   return (
@@ -26,9 +28,11 @@ export const LoginForm = () => {
 
         const data = await response.json();
 
-        if (data.message === "Bienvenido") {
-          router.push('/dashboard');
-        }
+        if (response.ok == false){
+          setError(data.message);
+          }else{
+            router.push('/dashboard');
+          }
       }}
     >
       <h1 className="text-4xl font-bold mb-8">Iniciar sesión</h1>
@@ -50,6 +54,7 @@ export const LoginForm = () => {
       >
         Ingresar
       </button>
+      {error && <p className='text-red-500'>{error}</p>}
     </form>
   );
 };
