@@ -1,46 +1,29 @@
-'use client'
-import { useEffect, useState } from 'react';
-import CharacterCard from '@/components/personaje-card';
+import { CharacterCard } from '@/components/personaje-card';
+import { createServerClient } from '@/utils/supabase/server';
+import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
-interface Character {
-  id: number;
-  name: string;
-  gender: string;
-  status: string;
-  species: string;
-  createdAt: string;
-  image: string | null; // La imagen puede ser null según los datos
-}
+export const revalidate = 0;
 
-export default function DashboardPage() {
-  const [characters, setCharacters] = useState<Character[]>([]);
+export default async function DashboardPage() {
+  const supabase = createServerClient();
+  const { data } = await supabase.from('personajes').select('*');
+  const user = await supabase.auth.getUser();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://futuramaapi.com/api/characters');
-        const data = await response.json();
-        if (data && data.items) {
-          setCharacters(data.items);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  if (user.error) {
+    return redirect('/');
+  }
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex justify-center">
-        <h1 className="text-4xl">Personajes de Futurama</h1>
-      </div>
+      <div>Personajes de Futurama</div>
+      <Link href="/dashboard/personaje/create">Crear Personaje</Link>
       <div className="flex items-center gap-y-8 gap-x-2 flex-wrap">
-        {characters.map((character) => (
-          <CharacterCard character={character} key={character.id} />
+        {data?.map((character: any) => (
+          <CharacterCard character={character} key={character.name} />
         ))}
       </div>
     </div>
   );
 }
+

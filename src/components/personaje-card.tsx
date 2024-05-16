@@ -1,33 +1,31 @@
-'use client'
-import React from 'react';
+'use client';
 
-interface Character {
-  id: number;
-  name: string;
-  gender: string;
-  status: string;
-  species: string;
-  createdAt: string;
-  image: string | null;
-}
+import { Image } from '@chakra-ui/next-js';
+import { Card, CardBody, Divider, Heading } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
 
-interface CharacterCardProps {
-  character: Character;
-}
+export const CharacterCard = ({ character }: any) => {
+  const router = useRouter();
 
-const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
   return (
-    <div className="card w-1/4 p-4">
-      <img src={character.image || 'https://via.placeholder.com/150'} alt={character.name} className="w-25 h-26 object-cover"/>
-      <div>
-        <h1>Datos:</h1>
-        <h3>Nombre: {character.name}</h3>
-        <p>Genero: {character.gender}</p>
-        <p>Estado: {character.status}</p>
-        <p>Especie: {character.species}</p>
-      </div>
-    </div>
+    <Card
+      maxW="sm"
+      onClick={() => {
+        router.push(`/dashboard/personaje/${character.name}`);
+      }}
+    >
+      <Image
+        width={400}
+        height={200}
+        src={character.flag}
+        alt={character.name}
+        borderRadius='lg'
+        className="w-10 h-10"
+      />
+      <Divider />
+      <CardBody>
+        <Heading size="md">{character.name}</Heading>
+      </CardBody>
+    </Card>
   );
 };
-
-export default CharacterCard;
