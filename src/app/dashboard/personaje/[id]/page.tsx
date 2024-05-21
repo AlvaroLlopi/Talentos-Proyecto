@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default async function CharacterById({ params }: any) {
   const supabase = createServerClient();
-  const { data } = await supabase.from('personajes').select('*').eq('name', params.id).single();
+  const { data } = await supabase.from('personajes').select('*').eq('id', params.id).single();
 
   return (
     <div className="flex flex-col gap-4 w-full justify-center items-center mt-4">
@@ -14,12 +14,13 @@ export default async function CharacterById({ params }: any) {
 
       <Image
         src={data?.image}
-        width={100}
-        height={100}
+        width={500}
+        height={500}
         alt={data?.name}
       />
-      <Link href={`/dashboard/personaje/${data?.name}/edit`}>Editar</Link>
-      <DeleteCharacterButton country={data} />
+      <Link href={`/dashboard/personaje/${data?.id}/edit`}>Editar</Link>
+      <Link href={`/dashboard`}>Cancelar</Link>
+      <DeleteCharacterButton character={data} />
     </div>
   );
 }

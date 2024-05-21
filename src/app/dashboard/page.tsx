@@ -8,7 +8,7 @@ export const revalidate = 0;
 export default async function DashboardPage() {
   const supabase = createServerClient();
   const { data } = await supabase.from('personajes').select('*');
-  const user = await supabase.auth.getUser();
+  const user = await supabase.auth.getSession();
 
   if (user.error) {
     return redirect('/');
@@ -16,14 +16,19 @@ export default async function DashboardPage() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div>Personajes de Futurama</div>
-      <Link href="/dashboard/personaje/create">Crear Personaje</Link>
-      <div className="flex items-center gap-y-8 gap-x-2 flex-wrap">
-        {data?.map((character: any) => (
-          <CharacterCard character={character} key={character.name} />
+      <div className="text-2xl text-center mt-4">Personajes de Futurama</div>
+      <div className="grid grid-cols-2 grid-rows-2 gap-4">
+        <div className="flex justify-start items-start ml-6">
+          <Link href="/dashboard/personaje/create" className="inline-block bg-blue-500 text-white text-sm py-1 px-2 rounded">
+            Crear Personaje
+          </Link>
+        </div>
+      </div>
+      <div className="grid grid-cols-3 gap-4">
+        {data?.map((character) => (
+          <CharacterCard character={character} key={character.id} />
         ))}
       </div>
     </div>
   );
 }
-

@@ -6,7 +6,7 @@ export default async function EditPersonaje({ params }: any) {
   const { data } = await supabase
     .from('personajes')
     .select('*')
-    .eq('name', params.id)
+    .eq('id', params.id)
     .single();
 
   return <EditCharacterForm character={data} />;
