@@ -7,12 +7,13 @@ export const revalidate = 0;
 
 export default async function DashboardPage() {
   const supabase = createServerClient();
-  const { data } = await supabase.from('personajes').select('*');
-  const user = await supabase.auth.getSession();
+  const { data: { session } } = await supabase.auth.getSession();
 
-  if (user.error) {
+  if (!session) {
     return redirect('/');
   }
+
+  const { data } = await supabase.from('personajes').select('*');
 
   return (
     <div className="flex flex-col gap-4">

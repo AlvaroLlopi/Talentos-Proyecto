@@ -18,8 +18,8 @@ export default async function CharacterById({ params }: any) {
         height={500}
         alt={data?.name}
       />
-      <Link href={`/dashboard/personaje/${data?.id}/edit`}>Editar</Link>
-      <Link href={`/dashboard`}>Cancelar</Link>
+      <Link href={`/dashboard/personaje/${data?.id}/edit`} className="bg-blue-500 text-white py-2 px-4 rounded">Editar </Link>
+      <Link href={`/dashboard`} className="bg-gray-500 text-white py-2 px-4 rounded">Cancelar</Link>
       <DeleteCharacterButton character={data} />
     </div>
   );
