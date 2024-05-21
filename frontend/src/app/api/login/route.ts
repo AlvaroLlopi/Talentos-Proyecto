@@ -3,22 +3,19 @@ import { createServerClient } from "@/utils/supabase/server";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   const body = await req.json();
+  const supabase = createServerClient();
   const { user, password } = body;
-  const supabase =createServerClient();
-  const usuarioEncontrado = await supabase
-  .from('users')
-  .select('*')
-  .filter('username', 'eq',user)
-  .filter('password', 'eq', password)
-  .limit(1).
-  single();
+
+  const {data: usuarioEncontrado, error} = await supabase.auth.signInWithPassword({
+    email: user,
+    password,
+  });
   
-  
-  if (usuarioEncontrado.data !== null) {
+  if (error === null) {
     return Response.json({ message: 'Bienvenido' });
   } else {
     return Response.json({ message: 'Usuario no encontrado' },{
       status:401,
-    });
-  }
+    });
+  }
 }

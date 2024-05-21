@@ -1,4 +1,7 @@
+import { DeleteCountryButton } from '@/components/delete-country-button';
+import { createServerClient } from '@/utils/supabase/server';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const getCharacterData = async (id: string) => {
   const response = await fetch(
@@ -11,7 +14,8 @@ const getCharacterData = async (id: string) => {
 };
 
 export default async function CharacterById({ params }: any) {
-  const data = await getCharacterData(params.id);
+  const supabase = createServerClient();
+  const { data } = await supabase.from('characters').select('*').eq('name', params.id).single();
 
   return (
     <div className="flex flex-col gap-4 w-full justify-center items-center mt-1">
@@ -23,7 +27,8 @@ export default async function CharacterById({ params }: any) {
         height={300}
         alt={data.name}
       />
+      {/* <Link href={/dashboard/pais/${data?.name}/edit}>Editar</Link>
+      <DeleteCountryButton country={data} /> */}
     </div>
   );
 }
-

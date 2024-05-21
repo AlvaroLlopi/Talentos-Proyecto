@@ -1,11 +1,14 @@
+import { createServerClient } from '@/utils/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const GET = async (req: NextRequest, res: NextResponse) => {
-  const response = await fetch('https://rickandmortyapi.com/api/character');
+  const supabase = createServerClient();
+  const {data, error} = await supabase.from('characters').select('*')
+  
 
-  const data = await response.json();
+  
 
-  return Response.json({ data });
+  return Response.json({ data, error });
 };
 
 

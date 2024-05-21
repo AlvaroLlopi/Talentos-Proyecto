@@ -6,6 +6,7 @@ interface CharacterCardProps {
     id: number;
     name: string;
     image: string;
+    character: string;
   };
 }
 
@@ -15,7 +16,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
       <Image
         width={100}
         height={100}
-        src={character.image}
+        src={character.character}
         alt={character.name}
         className="w-10 h-10"
       />
