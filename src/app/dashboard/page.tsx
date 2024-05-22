@@ -2,6 +2,7 @@ import { CharacterCard } from '@/components/personaje-card';
 import { createServerClient } from '@/utils/supabase/server';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import LogoutButton from '@/components/logout-button'; 
 
 export const revalidate = 0;
 
@@ -17,7 +18,10 @@ export default async function DashboardPage() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="text-2xl text-center mt-4">Personajes de Futurama</div>
+     <div className="flex justify-between items-center mt-4">
+        <div className="text-2xl text-center">Personajes de Futurama</div>
+        <LogoutButton /> {/* Añadir el botón de logout aquí */}
+      </div>
       <div className="grid grid-cols-2 grid-rows-2 gap-4">
         <div className="flex justify-start items-start ml-6">
           <Link href="/dashboard/personaje/create" className="inline-block bg-blue-500 text-white text-sm py-1 px-2 rounded">
