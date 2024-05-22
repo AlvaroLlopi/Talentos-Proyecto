@@ -21,11 +21,11 @@ export const CharacterCard = ({ character }: any) => {
         alt={character.name}
         src={character.image}
         borderRadius='lg'
-        className="w-10 h-10 hover:border hover:border-blue-500 hover:shadow-lg rounded-lg"
+        className="w-10 h-10 hover:border hover:border-blue-500 hover:shadow-lg rounded-t-lg"
       />
       <Divider />
       <CardBody>
-        <Heading size="md"><div className='flex justify-center'>{character.name}</div></Heading>
+        <Heading size="md"><div className='flex justify-center bg-black bg-opacity-75 rounded-b-lg'>{character.name}</div></Heading>
       </CardBody>
     </Card>
   );
