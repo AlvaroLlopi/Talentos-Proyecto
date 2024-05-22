@@ -23,10 +23,12 @@ export default async function CharacterById({ params }: any) {
         width={500}
         height={500}
         alt={data?.name}
+        className='rounded-lg'
       />
+      <div className='flex justify-center gap-8'>
       <Link href={`/dashboard/personaje/${data?.id}/edit`} className="bg-blue-500 text-white py-2 px-4 rounded">Editar </Link>
       <Link href={`/dashboard`} className="bg-gray-500 text-white py-2 px-4 rounded">Cancelar</Link>
-      <DeleteCharacterButton character={data} />
+      <DeleteCharacterButton character={data} /></div>
     </div>
   );
 }

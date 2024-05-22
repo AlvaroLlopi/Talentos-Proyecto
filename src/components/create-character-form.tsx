@@ -23,7 +23,7 @@ export const CreateCharacterForm = () => {
 
   return (
     <div className='bg-cover bg-center min-h-screen' style={{ backgroundImage: "url('/images/futurama.jpg')" }}>
-    <Container display="flex" justifyContent="start" alignItems="center" minHeight="100vh" maxHeight="100vh" >
+    <div className='container'>
       <Box width="25%" maxWidth="md" padding="8" borderWidth="0.5px" borderRadius="lg" boxShadow="lg" bg="black">
         <Heading as="h2" size="xl" textAlign="center" mb="6">Crear Personaje</Heading>
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -79,7 +79,8 @@ export const CreateCharacterForm = () => {
         </form>
         </div>
       </Box>
-    </Container>
+      </div>
     </div>
+
   );
 };

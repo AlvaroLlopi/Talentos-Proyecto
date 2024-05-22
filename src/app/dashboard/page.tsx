@@ -23,6 +23,7 @@ export default async function DashboardPage() {
   const { data } = await supabase.from('personajes').select('*');
 
   return (
+    <div className='bg-cover bg-center min-h-screen' style={{ backgroundImage: "url('/images/fondo.jpg')" }}>
     <div className="mx-auto max-w-2xl px-4 pt-6 sm:px-6 sm:pt-12 lg:max-w-7xl lg:px-8">
     
     <div className="flex flex-col gap-4">
@@ -30,7 +31,7 @@ export default async function DashboardPage() {
       <h2 className="text-2xl font-bold tracking-tight text-white">Personajes de Futurama</h2></div>
       <div className="grid grid-cols-2 grid-rows-2 gap-4">
         <div className="flex justify-start items-start ml-6">
-          <Link href="/dashboard/personaje/create" className="inline-block bg-blue-500 text-white text-sm py-1 px-2 rounded">
+          <Link href="/dashboard/personaje/create" className="inline-block bg-blue-500 text-white text-sm py-1 px-2 rounded-lg">
             Crear Personaje
           </Link>
         </div>
@@ -40,6 +41,7 @@ export default async function DashboardPage() {
           <CharacterCard character={character} key={character.id} />
         ))}
       </div>
+    </div>
     </div>
     </div>
   );
