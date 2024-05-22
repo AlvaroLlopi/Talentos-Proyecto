@@ -2,12 +2,25 @@
 
 import { useRouter } from 'next/navigation'
 import { useState } from 'react';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Login!",
+  description: "Bienvenido a la pagina de Futurama",
+};
 
 export const LoginForm = () => {
   const [error,setError] = useState<string | null>(null);
   const router = useRouter();
 
   return (
+    <div className='bg-cover bg-center min-h-screen' style={{ backgroundImage: "url('/images/futurama.jpg')" }}>
+    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            Iniciar Sesion
+          </h2>
+        </div>
     <form
       className="flex flex-col items-center"
       onSubmit={async (event) => {
@@ -35,7 +48,7 @@ export const LoginForm = () => {
           }
       }}
     >
-      <h1 className="text-4xl font-bold mb-8">Iniciar sesión</h1>
+      {/* <h1 className="text-4xl font-bold mb-8">Iniciar sesión</h1> */}
       <input
         type="text"
         name="user"
@@ -56,5 +69,7 @@ export const LoginForm = () => {
       </button>
       {error && <p className='text-red-500'>{error}</p>}
     </form>
+    </div>
+    </div>
   );
 };

@@ -1,5 +1,6 @@
 'use client'
 import { createClient } from '@/utils/supabase/client';
+import type { Metadata } from "next";
 import {
   Button,
   Container,
@@ -11,13 +12,19 @@ import {
 } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 
+export const metadata: Metadata = {
+  title: "Crear personajes de Futurama",
+  description: "Vista para crear personajes de futurama",
+};
+
 export const CreateCharacterForm = () => {
   const supabase = createClient();
   const router = useRouter();
 
   return (
-    <Container display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-      <Box width="70%" maxWidth="md" padding="8" borderWidth="1px" borderRadius="lg" boxShadow="lg">
+    <div className='bg-cover bg-center min-h-screen' style={{ backgroundImage: "url('/images/futurama.jpg')" }}>
+    <Container display="flex" justifyContent="start" alignItems="center" minHeight="100vh" maxHeight="100vh" >
+      <Box width="25%" maxWidth="md" padding="8" borderWidth="0.5px" borderRadius="lg" boxShadow="lg" bg="black">
         <Heading as="h2" size="xl" textAlign="center" mb="6">Crear Personaje</Heading>
         <form
           className="flex flex-col gap-4"
@@ -58,5 +65,6 @@ export const CreateCharacterForm = () => {
         </form>
       </Box>
     </Container>
+    </div>
   );
 };

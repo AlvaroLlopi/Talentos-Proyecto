@@ -2,6 +2,12 @@ import { DeleteCharacterButton } from '@/components/delete-character-button';
 import { createServerClient } from '@/utils/supabase/server';
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Personaje",
+  description: "Bienvenido a la pagina de Futurama",
+};
 
 
 export default async function CharacterById({ params }: any) {
