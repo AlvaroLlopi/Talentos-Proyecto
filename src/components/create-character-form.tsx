@@ -1,5 +1,6 @@
 'use client'
 import { createClient } from '@/utils/supabase/client';
+import type { Metadata } from "next";
 import {
   Button,
   Container,
@@ -11,14 +12,21 @@ import {
 } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 
+export const metadata: Metadata = {
+  title: "Crear personajes de Futurama",
+  description: "Vista para crear personajes de futurama",
+};
+
 export const CreateCharacterForm = () => {
   const supabase = createClient();
   const router = useRouter();
 
   return (
-    <Container display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-      <Box width="70%" maxWidth="md" padding="8" borderWidth="1px" borderRadius="lg" boxShadow="lg">
+    <div className='bg-cover bg-center min-h-screen' style={{ backgroundImage: "url('/images/futurama.jpg')" }}>
+    <div className='container'>
+      <Box width="25%" maxWidth="md" padding="8" borderWidth="0.5px" borderRadius="lg" boxShadow="lg" bg="black">
         <Heading as="h2" size="xl" textAlign="center" mb="6">Crear Personaje</Heading>
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form
           className="flex flex-col gap-4"
           onSubmit={async (event) => {
@@ -39,14 +47,27 @@ export const CreateCharacterForm = () => {
           style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
         >
           <FormControl id="name-control" isRequired>
-            <FormLabel>Nombre</FormLabel>
-            <Input name="name" type="text" required className="text-black" />
+          <label className="block text-sm font-medium leading-6 text-white">
+                Nombre
+          </label>
+            <input
+              name="name"
+              type="text"
+              required
+              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
           </FormControl>
           <FormControl id="image-control" isRequired>
-            <FormLabel>Imagen</FormLabel>
-            <Input name="image" type="text" required className="text-black" />
+          <label className="block text-sm font-medium leading-6 text-white">
+                Imagen
+          </label>
+          <input
+            name="image"
+            type="text"
+            required
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
           </FormControl>
-
           <Box display="flex" justifyContent="center" gap="50" mt="10">
           <Button size="lg" type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">
             Crear
@@ -56,7 +77,10 @@ export const CreateCharacterForm = () => {
             </Button>
           </Box>
         </form>
+        </div>
       </Box>
-    </Container>
+      </div>
+    </div>
+
   );
 };
