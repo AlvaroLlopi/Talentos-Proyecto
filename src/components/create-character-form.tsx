@@ -23,12 +23,12 @@ export const CreateCharacterForm = () => {
 
   return (
     <div className='bg-cover bg-center min-h-screen' style={{ backgroundImage: "url('/images/futurama.jpg')" }}>
-    <div className='container'>
-      <Box width="25%" maxWidth="md" padding="8" borderWidth="0.5px" borderRadius="lg" boxShadow="lg" bg="black">
+    <div className='container flex justify-center pt-5'>
+      <div className='p-4 bg-black bg-opacity-75 rounded-lg shadow-md max-w-xs h-max-w-xs '>
         <Heading as="h2" size="xl" textAlign="center" mb="6">Crear Personaje</Heading>
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="mt-3 sm:mx-auto sm:w-full sm:max-w-sm">
         <form
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-2"
           onSubmit={async (event) => {
             event.preventDefault();
             const formData = new FormData(event.currentTarget);
@@ -68,7 +68,7 @@ export const CreateCharacterForm = () => {
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           />
           </FormControl>
-          <Box display="flex" justifyContent="center" gap="50" mt="10">
+          <Box display="flex" justifyContent="center" gap="20" mt="10">
           <Button size="lg" type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">
             Crear
             </Button>
@@ -78,7 +78,7 @@ export const CreateCharacterForm = () => {
           </Box>
         </form>
         </div>
-      </Box>
+        </div>
       </div>
     </div>
 
