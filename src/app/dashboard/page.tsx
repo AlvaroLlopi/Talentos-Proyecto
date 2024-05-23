@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { createServerClient } from '@/utils/supabase/server';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-
+import LogoutButton from '@/components/logout-button'; 
 
 export const revalidate = 0;
 
@@ -27,8 +27,10 @@ export default async function DashboardPage() {
     <div className="mx-auto max-w-2xl px-4 pt-6 sm:px-6 sm:pt-12 lg:max-w-7xl lg:px-8">
     
     <div className="flex flex-col gap-4">
-      <div className="text-2xl text-center bg-black bg-opacity-75 rounded-lg">
-      <h2 className="text-2xl font-bold tracking-tight text-white">Personajes de Futurama</h2></div>
+     <div className="flex justify-between items-center mt-4">
+        <div className="text-2xl text-center">Personajes de Futurama</div>
+        <LogoutButton /> {/* Añadir el botón de logout aquí */}
+      </div>
       <div className="grid grid-cols-2 grid-rows-2 gap-4">
         <div className="flex justify-start items-start ml-6">
           <Link href="/dashboard/personaje/create" className="inline-block bg-blue-500 text-white text-sm py-1 px-2 rounded-lg">
