@@ -14,8 +14,9 @@ export const LoginForm = () => {
   const router = useRouter();
 
   return (
-    // <div className='bg-cover bg-center min-h-screen' style={{ backgroundImage: "url('/images/futurama.jpg')" }}>
+    <div className='bg-cover bg-center min-h-screen' style={{ backgroundImage: "url('/images/futurama.jpg')" }}>
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className=" p-4 bg-black bg-opacity-75 rounded-lg shadow-md max-w-xs h-max-w-xs">
     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
             Iniciar Sesion
@@ -95,6 +96,7 @@ export const LoginForm = () => {
     </form>
     </div>
     </div>
-    // </div>
+    </div>
+    </div>
   );
 };

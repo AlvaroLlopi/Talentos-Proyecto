@@ -38,7 +38,7 @@ export const EditCharacterForm = ({ character }: EditCharacterFormProps) => {
       <div className='bg-cover bg-center min-h-screen' style={{ backgroundImage: "url('/images/futurama.jpg')" }}>
     <div className="flex items-center justify-center h-screen">
       <div className="bg-black bg-opacity-75 p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2>Editar Personaje</h2>
+        <h2 className='mb-4'>Editar Personaje</h2>
         <form className="flex flex-col gap-4" onSubmit={onSubmit}>
           <input
             name="name"
