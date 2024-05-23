@@ -11,9 +11,11 @@ export default async function Home() {
   }
 
   return (
+    <div className='bg-cover bg-center min-h-screen' style={{ backgroundImage: "url('/images/fondo.jpg')" }}>
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <LoginForm />
     </main>
+    </div>
   );
 }
 
