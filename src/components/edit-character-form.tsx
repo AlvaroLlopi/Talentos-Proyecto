@@ -35,36 +35,39 @@ export const EditCharacterForm = ({ character }: EditCharacterFormProps) => {
   };
 
   return (
+      <div className='bg-cover bg-center min-h-screen' style={{ backgroundImage: "url('/images/futurama.jpg')" }}>
     <div className="flex items-center justify-center h-screen">
-      <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
+      <div className="bg-black bg-opacity-75 p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2>Editar Personaje</h2>
         <form className="flex flex-col gap-4" onSubmit={onSubmit}>
           <input
             name="name"
             type="text"
             placeholder="Nombre"
-            className="text-black p-2 border border-gray-300 rounded"
+            className="text-black p-2 border border-gray-300 rounded-lg"
             defaultValue={character?.name}
           />
           <input
             name="image"
             type="text"
             placeholder="Image"
-            className="text-black p-2 border border-gray-300 rounded"
+            className="text-black p-2 border border-gray-300 rounded-lg"
             defaultValue={character?.image}
           />
           <div className="flex justify-between gap-4">
-            <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">
+            <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-lg">
               Editar
             </button>
-            <button type="button" onClick={onDelete} className="bg-red-500 text-white py-2 px-4 rounded">
+            <button type="button" onClick={onDelete} className="bg-red-500 text-white py-2 px-4 rounded-lg">
               Eliminar
             </button>
-            <button type="button" onClick={onCancel} className="bg-gray-500 text-white py-2 px-4 rounded">
+            <button type="button" onClick={onCancel} className="bg-gray-500 text-white py-2 px-4 rounded-lg">
               Cancelar
             </button>
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 };

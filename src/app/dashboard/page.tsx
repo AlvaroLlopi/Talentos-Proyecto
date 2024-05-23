@@ -25,11 +25,14 @@ export default async function DashboardPage() {
   return (
     <div className='bg-cover bg-center min-h-screen' style={{ backgroundImage: "url('/images/fondo.jpg')" }}>
     <div className="mx-auto max-w-2xl px-4 pt-6 sm:px-6 sm:pt-12 lg:max-w-7xl lg:px-8">
-    
+<div className='display flex justify-end mb-4'>
+    <LogoutButton /> {/* Añadir el botón de logout aquí */}
+    </div>
     <div className="flex flex-col gap-4">
-     <div className="flex justify-between items-center mt-4">
-        <div className="text-2xl text-center">Personajes de Futurama</div>
-        <LogoutButton /> {/* Añadir el botón de logout aquí */}
+     
+      <div className="text-2xl text-center bg-black bg-opacity-75 rounded-lg display flex justify-center">
+      <h2 className="text-2xl font-bold tracking-tight text-white">Personajes de Futurama</h2>
+     
       </div>
       <div className="grid grid-cols-2 grid-rows-2 gap-4">
         <div className="flex justify-start items-start ml-6">
